@@ -1,4 +1,4 @@
-ÿþasgiref==3.5.2
+asgiref==3.5.2
 autopep8==2.0.0
 Django==3.2.4
 django-cors-headers==3.13.0

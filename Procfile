@@ -1,1 +1,1 @@
-web : gunicorn Proyecto_API.wsi --log-file -
+web : python manage.py runserver && gunicorn Proyecto_API.wsi --log-file -

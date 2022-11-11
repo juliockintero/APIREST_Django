@@ -1,1 +1,1 @@
-web : gunicorn 'Proyecto_API.wsi' 
+web : gunicorn Proyecto_API.wsi

@@ -10,8 +10,11 @@ For the full list of settings and their values, see
 https://docs.djangoproject.com/en/3.2/ref/settings/
 """
 
-from pathlib import Path
 import os
+from pathlib import Path
+
+from decouple import config
+
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
@@ -79,14 +82,30 @@ WSGI_APPLICATION = 'Proyecto_API.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/3.2/ref/settings/#databases
 
+#DATABASE FOR DEVELOPMENT
+
+#DATABASES = {
+#    'default': {
+#        'ENGINE': 'django.db.backends.mysql',
+#        'HOST': 'localhost',
+#        'PORT': '3306',
+#        'USER': 'root',
+#        'PASSWORD': '',
+#        'NAME': 'django_api',
+#        'OPTIONS': {
+#            'init_command': "SET sql_mode='STRICT_TRANS_TABLES'"
+#        }
+#    }
+#}
+
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
-        'HOST': 'localhost',
-        'PORT': '3306',
-        'USER': 'root',
-        'PASSWORD': '',
-        'NAME': 'django_api',
+        'HOST': config('MYSQLHOST', default='localhost'),
+        'PORT': config('MYSQLPORT', default='3306'),
+        'USER': config('MYSQLUSER', default='root'),
+        'PASSWORD': config('MYSQLPASSWORD', default=''),
+        'NAME': config('MYSQLDATABASE', default='django_api'),
         'OPTIONS': {
             'init_command': "SET sql_mode='STRICT_TRANS_TABLES'"
         }
